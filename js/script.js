@@ -18,8 +18,8 @@ function createDivs(limit) {
 
 function checkInput() { 
   while (true) {
-    let numOfDivs = prompt("Enter the grid size! (Min: 4 | Max: 100)", 4);
-    if (numOfDivs >= 4 && numOfDivs <= 50) {
+    let numOfDivs = prompt("Enter the grid size! (Min: 16 | Max: 100)", 4);
+    if (numOfDivs >= 16 && numOfDivs <= 50) {
       return numOfDivs;
     };
   };
@@ -27,6 +27,10 @@ function checkInput() {
 
 const mainContainer = document.querySelector('.main-container');
 
+
 createDivs(checkInput());
 
+document.querySelectorAll(".row-div").forEach(div => {
+  div.addEventListener('mouseover', () => div.classList.toggle('change-color'))
+});
 
