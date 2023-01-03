@@ -1,0 +1,24 @@
+body {
+  background-color: lightslategray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  height: 720px;
+  width: 720px;
+}
+
+.column-div{
+  aspect-ratio: 1 / 1;
+  background-color: #000000;
+}
+
+.row-div {
+  aspect-ratio: 1 / 1;
+  border: 1px solid #6088f7;
+  background-color: #a2b8f5;
+}
