@@ -1,5 +1,8 @@
 body {
-  background-color: lightslategray;
+  background-image: url('../images/background.jpg');
+  background-size: cover;
+  background-color: bisque;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
