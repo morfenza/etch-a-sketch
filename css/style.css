@@ -5,14 +5,37 @@ body {
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   min-height: 100vh;
+}
+
+header {
+  font-family: 'Segoe Script', sans-serif;
+  font-size: xx-large;
+  font-weight: bolder;
+  background-color: #d2e5f5d5;
+  color: #000000;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+footer {
+  background-color: #d2e5f5d5;
+  color: #000000;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+a {
+  color: #5350fc;
+  text-decoration: none;
 }
 
 .top-btns,
 .bottom-btns {
   display: flex;
+  justify-content: center;
 }
 
 .btn {
@@ -20,14 +43,16 @@ body {
   width: 100px;
   margin: 10px 20px;
   border-radius: 12px;
-  background-color: rgba(240, 248, 255, 0.76);
+  background-color: #d2e5f5d5;
+  font-weight: bold;
 }
 
 .main-container {
-  border: 10px solid black;
+  border: 10px solid rgba(0, 0, 0, 0.514);
   display: flex;
   height: 720px;
   width: 720px;
+  border-radius: 15px;
 }
 
 .column-div{
