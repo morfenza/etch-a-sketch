@@ -10,7 +10,21 @@ body {
   min-height: 100vh;
 }
 
+.top-btns,
+.bottom-btns {
+  display: flex;
+}
+
+.btn {
+  height: 30px;
+  width: 100px;
+  margin: 10px 20px;
+  border-radius: 12px;
+  background-color: rgba(240, 248, 255, 0.76);
+}
+
 .main-container {
+  border: 10px solid black;
   display: flex;
   height: 720px;
   width: 720px;
@@ -29,4 +43,33 @@ body {
 .change-color {
   transition: all 0.25s ease-out;
   background-color: black;
+}
+
+.reset-btn,
+.size-btn, 
+.black-btn,
+.rainbow-btn,
+.color-picker {
+  transition-duration: 0.4s;
+}
+
+.black-btn:hover {
+  background-color: #333333; 
+  color: white;
+}
+
+.rainbow-btn:hover {
+  background-color: #be6060; 
+  color: white;
+}
+
+.color-picker:hover{
+  background-color: #2b2b2b7e; 
+  color: white;
+}
+
+.reset-btn:hover,
+.size-btn:hover {
+  background-color: #d1d1d1; 
+  color: #333333;
 }
