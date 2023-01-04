@@ -18,29 +18,17 @@ function createDivs(limit) {
 
 function checkInput() { 
   while (true) {
-    let numOfDivs = prompt("Enter the grid size! (Min: 16 | Max: 64)", 4);
+    let numOfDivs = prompt("Enter the grid size! (Min: 16 | Max: 64)", 16);
     if (numOfDivs >= 16 && numOfDivs <= 64) {
       return numOfDivs;
     }
   }
 }
 
-function resetBoard() {
-  document.querySelectorAll('.row-div').forEach( div => {
-    div.classList.remove('change-color');
-  }); 
-}
-
-function changeSize() {
-
-  let size = checkInput()
-
+function changeSize(type) {
   clearBoard()
   createDivs(size);
-  
-  document.querySelectorAll('.row-div').forEach( div => {
-    div.addEventListener('mouseover', () => div.classList.toggle('change-color'));
-  }); 
+  attachListener(type);  
 }
 
 function clearBoard() {
@@ -49,20 +37,94 @@ function clearBoard() {
   }
 }
 
+function changeColor(color) {
+
+  switch (color) {
+    case 'black':
+      changeSize('black')
+      break;
+
+    case 'rainbow':
+      changeSize('rainbow')
+      break;
+
+    case 'picker':
+      changeSize('picker')
+      break;
+  }
+}
+
+function attachListener(type) {
+
+  switch (type) {
+
+    case 'black':
+      document.querySelectorAll('.row-div').forEach( div => {
+        div.addEventListener('mouseover', () => div.classList.toggle('change-color'));
+      });
+      break;
+      
+    case 'rainbow':
+      document.querySelectorAll('.row-div').forEach( div => {
+        div.addEventListener('mouseover', () => {
+          div.classList.toggle('change-color')
+          div.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        });
+      });
+      break;
+
+    case 'picker':
+      document.querySelectorAll('.row-div').forEach( div => {
+        div.addEventListener('mouseover', () => {
+          div.classList.toggle('change-color');
+          div.style.backgroundColor = colorPicker.value;
+        });
+      });
+      break;
+
+  }
+  
+}
+
 function initiateBoard() {
-
-  createDivs(24);
-
-  document.querySelectorAll('.row-div').forEach( div => {
-    div.addEventListener('mouseover', () => div.classList.toggle('change-color'));
-  });  
+  createDivs(size); 
+  attachListener('black');
 }
 
 const mainContainer = document.querySelector('.main-container');
+
 const resetBtn = document.querySelector('.reset-btn');
 const sizeBtn = document.querySelector('.size-btn')
+const blackBtn = document.querySelector('.black-btn');
+const rainbowBtn = document.querySelector('.rainbow-btn');
+const colorPicker = document.querySelector('.color-picker');
+
+let size = 24;
+let currentType = 'black';
 
 initiateBoard()
 
-resetBtn.addEventListener('click', resetBoard);
-sizeBtn.addEventListener('click', changeSize);
+resetBtn.addEventListener('click', () => {
+  changeSize(currentType)
+});
+
+sizeBtn.addEventListener('click', () => {
+  size = checkInput();
+  currentType = 'black';
+  changeSize(currentType)
+});
+
+blackBtn.addEventListener('click', () => {
+  currentType = 'black';
+  changeColor(currentType, size);
+});
+
+rainbowBtn.addEventListener('click', () => {
+  currentType = 'rainbow';
+  changeColor(currentType, size);
+});
+
+colorPicker.addEventListener('input', () => {
+  currentType = 'picker';
+  changeColor(currentType, size);
+});
